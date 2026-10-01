@@ -1,0 +1,33 @@
+#download from NCBI
+
+# Before install something mamba do this:
+module load python/anaconda-3.9
+source /share/apps/bin/conda-3.9.sh
+
+# Download genomes (CotGob, EleMac, GymAcu, PseGeo) from the NCBI datasets API.
+# Pattern:
+curl -OJX GET "https://api.ncbi.nlm.nih.gov/datasets/v2alpha/genome/accession/<ACCESSION>/download?include_annotation_type=GENOME_FASTA,GENOME_GFF,RNA_FASTA,CDS_FASTA,PROT_FASTA,SEQUENCE_REPORT&filename=<ACCESSION>.zip" -H "Accept: application/zip"
+#   CotGob -> GCA_900634415.1
+#   EleMac -> GCA_036324505.1
+#   GymAcu -> GCA_902827175.1
+#   PseGeo -> GCA_902827115.1
+
+#BLASTp commands
+# Six species: Cgob  Emac  Gacu  Hant  Nros  Pse
+# All-vs-all reciprocal blastp (both directions for every pair) + self-comparisons.
+# Pattern (repeat for every ordered pair A,B in the six species):
+
+blastp -db ncbiDB/<B> -query ncbi/<A>_protein.faa -evalue 1e-10 -num_alignments 5 -outfmt 6 -out <A>-<B>.blastp
+blastp -db ncbiDB/<A> -query ncbi/<B>_protein.faa -evalue 1e-10 -num_alignments 5 -outfmt 6 -out <B>-<A>.blastp
+
+# Pairs run: Cgob-Emac, Cgob-Gacu, Cgob-Hant, Cgob-Nros, Cgob-Pse,
+#            Emac-Gacu, Emac-Hant, Emac-Nros, Emac-Pse,
+#            Gacu-Hant, Gacu-Nros, Gacu-Pse,
+#            Hant-Nros, Hant-Pse,
+#            Nros-Pse
+
+# Self-comparisons for each species (note -num_alignments 6, not 5):
+blastp -db ncbiDB/<X> -query ncbi/<X>_protein.faa -evalue 1e-10 -num_alignments 6 -outfmt 6 -out <X>-<X>.blastp
+# run for: Cgob, Emac, Gacu, Hant, Nros, Pse
+
+# The .blastp outputs plus the matching .gff are the two inputs MCScanX needs.

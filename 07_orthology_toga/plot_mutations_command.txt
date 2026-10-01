@@ -1,0 +1,36 @@
+# Per-species inactivating-mutation plots for a single reference gene (PNPLA2 = ENSCGOG00000006716)
+# Pattern:
+#   ./plot_mutations.py <reference.bed> <PROJECT>/inact_mut_data.hdf5 <GENE_ID> <out.svg> -i <isoform.txt> [--pmh]
+
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-PseGeo-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_PseGeo.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-ChaAce-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_ChaAce.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-ChaGun-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_ChaGun.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-ChaSox-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_ChaSox.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-GymAcu-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_GymAcu.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-HarAnt-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_HarAnt.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-PogAlb-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_PogAlb.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-DisEle-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_DisEle.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1stMarch-DisMac-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_DisMac.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1stMarch-BovVar-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_BovVar.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-BovDia-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_BovDia.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-EleMac-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_EleMac.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-LepNud-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_LepNud.svg -i /home/vlamba/CotGob-isofrom.txt
+./plot_mutations.py /home/vlamba/Noto_bed_files/12_GCF_900634415.1_fCotGob3.1.ensGene.bed /home/vlamba/Toga-gene-loss-makelastz_Noto/1March-TreBer-gene-loss-mlastz/inact_mut_data.hdf5 ENSCGOG00000006716 PNPLA2_TreBer.svg -i /home/vlamba/CotGob-isofrom.txt
+
+grep -A1 "ENSCGOT00000014888.1" codon.fasta
+
+# The 14 TOGA project directories these plots were drawn from:
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-BovDia-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-GymAcu-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1stMarch-BovVar-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-ChaAce-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-HarAnt-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1stMarch-DisMac-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-ChaGun-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-LepNud-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-ChaSox-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-PogAlb-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-DisEle-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-PseGeo-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-EleMac-gene-loss-mlastz
+/home/vlamba/Toga-gene-loss-makelastz_Noto/1March-TreBer-gene-loss-mlastz

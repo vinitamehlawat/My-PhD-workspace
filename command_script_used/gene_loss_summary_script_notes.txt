@@ -1,0 +1,30 @@
+# Notes accompanying an externally-written gene-loss summarising script
+# (original file: gene_loss-python-code.txt, May 2024). The script itself was delivered
+# via a Box folder and is NOT in this repo — if you need it, ask Xuan Zhuang's lab for the
+# Box folder contents ("a script, a csv version of that data file, a file containing a list
+# of species names, and an example report produced by the script").
+
+Usage:
+    python <script> gene_loss_file  species_names_file  report_file  tolerance_threshold
+
+Requires a Python environment with `pandas`.
+
+Arguments:
+  - Gene loss file          CSV version of the TOGA gene-loss data table.
+  - Species name file       One species per line, names must match those in the data file.
+                            THE FIRST SPECIES IN THE LIST IS USED AS THE OUTGROUP; the rest
+                            are treated as ingroup. (EleMac was in the species list, so the
+                            author did not add functionality to use the TOGA outgroup species
+                            as the script's outgroup.)
+  - Report file             Name of a new file that will contain the summary report.
+  - Tolerance threshold     Number of species you need to find a full loss in for the gene to
+                            be considered lost. For completeness, the script also counts genes
+                            that are found fully intact in some species but still meet the loss
+                            threshold, under a separate heading — in case there is some lineage-
+                            specific thing going on.
+
+Note from the author: the script is a little inefficient and slow and will probably take a few
+minutes to run each time.
+
+# The equivalent awk one-liners that were used for the same job directly on the CSVs are in
+# ../command_script_used/lab_notebook_all_commands.txt (top of file).

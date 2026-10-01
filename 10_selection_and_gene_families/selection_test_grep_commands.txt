@@ -1,0 +1,34 @@
+# Pulling significant results out of HyPhy output directories.
+# (extracted from the general lab notebook so it sits next to the BH script that consumes it)
+
+# For aBSREL
+grep -l "Likelihood ratio test for episodic diversifying positive selection at Holm-Bonferroni corrected _p =  0.0500_ found \*\*1\*\* branches under selection among \*\*1\*\* tested." hyphy.absrel/*.out \
+  | while read -r filename; do
+      cp $filename absrel.significant
+      base=${filename%.out}
+      cp $base.absrel.json absrel.significant
+      cp $base.err absrel.significant
+    done
+
+# For RELAX
+grep -l "Evidence for \*relaxation of selection\* among \*\*test\*\* branches _relative_ to the \*\*reference\*\* branches at P<=0.05" hyphy.relax/*.out \
+  | while read -r filename; do
+      cp $filename relax.relax
+      base=${filename%.out}
+      cp $base.relax.json relax.relax
+      cp $base.err relax.relax
+    done
+
+# Then apply the Benjamini-Hochberg FDR correction:
+python absrel_benjamini_hochberg.py sig_results_directory all_results_directory test_output_file candidate_output_file FDR_threshold
+
+# To visualise the json output from RELAX:
+# https://observablehq.com/@spond/plotting-relax-k-values-on-branches-of-the-tree
+
+# CAFE inputs used for the notothenioid run:
+# /storage/vlamba/data/TOGA_pep/OrthoFinder_inputs/OrthoFinder/Results_Mar12/Orthogroups/cafe.input.tsv
+# /storage/vlamba/data/TOGA_pep/OrthoFinder_inputs/OrthoFinder/Results_Mar12/Species_Tree/SpeciesTree_rooted.txt.ultrametric.tre
+
+# CAFE reference material:
+# https://github.com/harish0201/Analyses_Pipelines/blob/main/7.CAFE.sh
+# https://github.com/shanedenecke/SLC_ID_SCRIPTS/blob/master/Fulton_python_scripts/cafetutorial_clade_and_size_filter.py

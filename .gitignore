@@ -1,0 +1,45 @@
+# Data — never commit. See README for where these live on the cluster.
+*.hal
+*.2bit
+*.chain
+*.maf
+*.psl
+*.bam
+*.bai
+*.fa
+*.fna
+*.faa
+*.fasta
+*.fastq
+*.fastq.gz
+*.gtf
+*.gff
+*.gff3
+*.bed
+*.bed12
+*.bb
+*.hdf5
+*.RData
+*.Rds
+
+# Job output
+*.err
+*.out
+slurm-*.out
+.nextflow*
+work/
+js/
+jschain/
+
+# R / Python
+.Rhistory
+.RData
+.Rproj.user/
+*_cache/
+*_files/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

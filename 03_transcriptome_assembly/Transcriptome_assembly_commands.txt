@@ -1,0 +1,60 @@
+module load gcc-11.2.1/SKYLAKEX/sratoolkit/3.0.0
+or sometimes
+module --ignore_cache load gcc-11.2.1/SKYLAKEX/sratoolkit/3.0.0
+#ChaSox prefetch SRR20313223
+
+#ChaGun 
+1. prefetch SRR20313222 -X 30GB
+2. fastq-dump --split-files SRR20313222
+3. fastqc SRR20313222_1.fastq SRR20313222_2.fastq
+4. trimmomatic PE SRR20313222_1.fastq SRR20313222_2.fastq \
+              SRR20313222_1_trimmed.fastq SRR20313222_1_unpaired.fastq \
+              SRR20313222_2_trimmed.fastq SRR20313222_2_unpaired.fastq \
+              ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 \
+              LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+. 
+
+/storage/vlamba/data/SRA_transcriptome_noto/ChaSox/trimmed2 
+
+
+
+Trinity --seqType fq --max_memory 180G --left /storage/vlamba/data/SRA_transcriptome_noto/ChaSox/trimmed2/SRR20313223_1_trimmed.fastq --right /storage/vlamba/data/SRA_transcriptome_noto/ChaSox/trimmed2/SRR20313223_2_trimmed.fastq  --SS_lib_type FR  --output /storage/vlamba/data/SRA_transcriptome_noto/ChaSox/trimmed2/trinity_out_dir --CPU 30
+
+
+5. Trinity --seqType fq --max_memory 180G --left /storage/vlamba/data/SRA_transcriptome_noto/ChaGun/SRR20313222_1_trimmed.fastq --right /storage/vlamba/data/SRA_transcriptome_noto/ChaGun/SRR20313222_2_trimmed.fastq  --SS_lib_type FR  --output /storage/vlamba/data/SRA_transcriptome_noto/ChaGun/trinity_out_dir --CPU 30
+
+/storage/vlamba/data/SRA_transcriptome_noto/ChaGun
+
+Trinity --seqType fq --max_memory 180G --left /storage/vlamba/data/SRA_transcriptome_noto/ChaSox/tri$
+
+
+# EleMac ref transcriptome parameter Cheng lab
+ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 \
+              LEADING:20 TRAILING:20 SLIDINGWINDOW:4:15 MINLEN:70
+
+
+
+# Workflow
+# Step 1: Download SRA data
+prefetch SRRXXXXXX
+fastq-dump --split-files SRRXXXXXX
+
+# Step 2: Quality control and preprocessing
+fastqc SRRXXXXXX_1.fastq SRRXXXXXX_2.fastq
+trimmomatic PE SRRXXXXXX_1.fastq SRRXXXXXX_2.fastq \
+              SRRXXXXXX_1_trimmed.fastq SRRXXXXXX_1_unpaired.fastq \
+              SRRXXXXXX_2_trimmed.fastq SRRXXXXXX_2_unpaired.fastq \
+              ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 \
+              LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+# Step 3: Assemble the transcriptome
+Trinity --seqType fq --max_memory 50G --left SRRXXXXXX_1_trimmed.fastq --right SRRXXXXXX_2_trimmed.fastq --CPU 10 --output trinity_out_dir
+
+# Step 4: Post-assembly processing
+busco -i trinity_out_dir/Trinity.fasta -l eukaryota_odb9 -o busco_out -m transcriptome
+TransDecoder.LongOrfs -t trinity_out_dir/Trinity.fasta
+TransDecoder.Predict -t trinity_out_dir/Trinity.fasta
+
+# Step 5: Functional annotation
+blastp -query transdecoder_dir/longest_orfs.pep -db nr -out blastp.out -evalue 1e-5 -num_threads 10

@@ -1,0 +1,13 @@
+# Reciprocal best-hit check with DIAMOND, used to validate the "common loss" gene sets
+# called against the two different references (CotGob and EleMac).
+
+diamond makedb --in CotGob_protein.faa -d Ref1_protein
+diamond makedb --in EleMac_protein.faa -d Ref2_protein
+
+diamond blastp -q 540_common_loss_CotGob.faa -d Ref2_protein.dmnd -o CotGob_diamond_results.txt --evalue 1e-5 --query-cover 80 
+# Reported 1588 pairwise alignments, 1588 HSPs.
+# 319 queries aligned.
+
+diamond blastp -q 456_common_loss_EleMac.faa -d Ref1_protein.dmnd -o EleMac_diamond_results.txt --evalue 1e-5 --query-cover 80
+# Reported 2250 pairwise alignments, 2250 HSPs.
+# 184 queries aligned.
