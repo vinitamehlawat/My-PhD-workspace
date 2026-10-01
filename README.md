@@ -1,8 +1,7 @@
 # Comparative Genomics — PhD Code Archive
 
-Code used during my PhD in Zhuang Lab, University of Arkansas. Scripts are grouped by pipeline stage, in the
-order they were actually run. Every folder has its own `README.md` explaining what
-each script does, what it takes in, and what it produces.
+Code used during my PhD in Zhuang Lab, University of Arkansas. Every folder has its own `README.md` explaining what
+each script does, what it takes in, and what it give as output.
 ---
 
 ## Pipeline order
@@ -23,15 +22,15 @@ command_script_used             the misc one-liners and utility scripts
 ```
 
 Stages 05 → 07 are the spine of the gene-loss work: build a chain between a reference
-and a query genome, hand that chain to TOGA, then interpret `loss_summ_data.tsv`.
-Stage 06 is an alternative route to the same chains (and the source of the multiple
+and a query genome (makelastz aligned whole-genome), hand that chain to TOGA.
+Stage 06 is an alternative route to the same chains (cactus multiple
 alignment used for synteny).
 
 ---
 
 ## The two ways chains were made — read this first
 
-This trips people up. There are **two independent routes** to a `.chain` file in this repo:
+There are **two independent routes** to a `.chain` file in this repo:
 
 1. **`make_lastz_chains`** (`05_pairwise_genome_chaining/makelastz_chain.sh`,
    `2_chaning_genome.sh`) — pairwise lastz + chaining, run via Nextflow. This is the
@@ -40,10 +39,10 @@ This trips people up. There are **two independent routes** to a `.chain` file in
    `LepNud_chaining.sh`, and `06_.../hal-to-chain.sh`) — `hal2fasta` → `faToTwoBit`,
    `halStats --bedSequences`, `halLiftover --outPSL`, `pslPosTarget`, `axtChain`.
 
-Both produce chains TOGA accepts. Route 1 was preferred later on; route 2 was used when
-a Cactus alignment already existed.
+Both provided chains TOGA accepts. Route 1 was preferred later on; route 2 was used when
+a Cactus alignment already existed (TOGA output was similar)
 
-## FASTA header hygiene — the most common failure
+## FASTA header hygiene — the most common failure while running make_lastz_chains on existing NCBI style header
 
 `make_lastz_chains` and TOGA both break on messy NCBI FASTA headers. The fixes are in
 `command_script_used/lab_notebook_all_commands.txt`, and you will need them:
@@ -55,7 +54,7 @@ awk '/^>/ {$0=$1} 1'       in.fna > out.fna   # keep only first field
 ```
 
 After chaining, put the original chromosome names back with
-`standalone_scripts/rename_chromosomes_back.py` — otherwise your chain will not match
+`TOGA/../../standalone_scripts/rename_chromosomes_back.py` — otherwise your chain will not match
 your reference BED.
 
 ---
@@ -88,57 +87,26 @@ your reference BED.
 | PagMac / PagBor | *Pagetopsis macropterus* / *borchgrevinki* | Channichthyidae (icefish) |
 | PogAlb | *Pogonophryne albipinna* | Artedidraconidae |
 
-Flatfish comparison set: ScoMax (turbot, reference), PlePla, HipHip, PleFle, LimLim,
-VerVar, MicKit, PseAme, ReiHip.
 
-Full genome paths as they were on the cluster are listed in
-`command_script_used/lab_notebook_all_commands.txt`.
 
 ---
 
 ## Environment
 
 All scripts are SLURM batch jobs for the University of Arkansas **Pinnacle** cluster
-(`--partition condo --qos condo --constraint 'xz036'`). On any other system, delete the
-`#SBATCH` block and the `module load` lines, and supply the tools yourself.
 
-Conda environments referenced by name: `RepeatModeler`, `cactus-3.13`, `Lastz`,
+
+Several conda environments were used on HPC: `RepeatModeler`, `cactus-3.13`, `Lastz`,
 `nextflow-25.3.0-el9`, `braker2tabix-3.10` / `-3.11`, `busco`, `salmon`.
 
 Key module versions as used: cactus/2.6.7, lastz/1.04.15, trinity/2.15.1,
 orthofinder/2.5.2, nextflow/20.10.0–25.3.0, BUSCO 5.4.2.
 
 Two SLURM settings to sanity-check before reusing anything: `--time` (some jobs are set
-to 20 days) and `--chaining_memory` (30–50 GB). Both were tuned for specific genome
+to 2 days) and `--chaining_memory` (30–50 GB). Both were tuned for specific genome
 sizes.
 
 ---
 
 ## Data is NOT in this repo
-
-Only code lives here. The data these scripts consume and produce stayed on the cluster
-under `/storage/vlamba/data/`:
-
-| What | Where |
-|---|---|
-| Genome FASTAs (all species) | `/storage/vlamba/data/Genomes-noto/NOTO-genome/` |
-| Cactus alignment (`seqfile2.hal`, ~1.85 GB) | `/storage/vlamba/data/Genomes-noto/2-alignment/` |
-| Chains vs. EleMac | `/storage/vlamba/data/Chaining_with_Emac/<SP>-chain/` |
-| TOGA project dirs (14 species) | `/storage/vlamba/data/.../<date>-<SP>-gene-loss-mlastz/` |
-| Transcriptomes | `/storage/vlamba/data/Noto-transcriptome/`, `SRA_transcriptome_noto/` |
-| Sculpin RNA-seq | `/storage/vlamba/data/Sculpin-transcriptome/` |
-| Flatfish set | `/storage/vlamba/data/flat-fish/` |
-| DESwoMAN / de novo gene work | `/storage/vlamba/data/Denovo_gene-Noto/` |
-
-A pilot Cactus alignment (`pilot_noto.hal`) and some `.RData` / plot outputs were in the
-original Drive folder; they are data, not code, and were deliberately left out.
-
----
-
-## Where to start if you are picking this up
-
-1. Read `07_orthology_toga/TOGA_FAQ_hillerlab.md` — it answers the questions you are
-   about to have about `loss_summ_data.tsv`, `UL` status, and orthology classification.
-2. Skim `command_script_used/lab_notebook_all_commands.txt` — most day-to-day work was
-   one-liners from this file.
-3. Pick one species pair and walk 05 → 07 end to end before touching anything else.
+Only code that were used for different programs are here.
