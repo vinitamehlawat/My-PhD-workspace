@@ -59,38 +59,6 @@ your reference BED.
 
 ---
 
-## Species codes
-
-| Code | Species | Group |
-|---|---|---|
-| CotGob | *Cottoperca gobio* | outgroup (non-Antarctic), primary reference |
-| EleMac | *Eleginops maclovinus* | outgroup (non-Antarctic), second reference |
-| BovVar | *Bovichtus variegatus* | Bovichtidae (non-Antarctic) |
-| BovDia | *Bovichtus diacanthus* | Bovichtidae (non-Antarctic) |
-| DisMaw / DisMac | *Dissostichus mawsoni* | Nototheniinae |
-| DisEle | *Dissostichus eleginoides* | Nototheniinae |
-| TreBer | *Trematomus bernacchii* | Nototheniinae |
-| TreLoe | *Trematomus loennbergii* | Nototheniinae |
-| NotRos | *Notothenia rossii* | Nototheniinae |
-| LepNud | *Lepidonotothen nudifrons* | Nototheniinae |
-| GobGib | *Gobionotothen gibberifrons* | Nototheniinae |
-| GymAcu | *Gymnodraco acuticeps* | Bathydraconidae |
-| HarAnt | *Harpagifer antarcticus* | Bathydraconidae |
-| HisVel | *Histiodraco velifer* | Bathydraconidae |
-| AkaNud | *Akarotaxis nudiceps* | Bathydraconidae |
-| ChaAce | *Champsocephalus aceratus* | Channichthyidae (icefish) |
-| ChaGun | *Champsocephalus gunnari* | Channichthyidae (icefish) |
-| ChaSox | *Chaenocephalus* sp. | Channichthyidae (icefish) |
-| ChaWil | *Chionodraco wilsoni* | Channichthyidae (icefish) |
-| CryAnt | *Cryodraco antarcticus* | Channichthyidae (icefish) |
-| PseGeo | *Pseudochaenichthys georgianus* | Channichthyidae (icefish) |
-| PagMac / PagBor | *Pagetopsis macropterus* / *borchgrevinki* | Channichthyidae (icefish) |
-| PogAlb | *Pogonophryne albipinna* | Artedidraconidae |
-
-
-
----
-
 ## Environment
 
 All scripts are SLURM batch jobs for the University of Arkansas **Pinnacle** cluster
