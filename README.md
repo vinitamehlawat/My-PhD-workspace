@@ -1,4 +1,4 @@
-# Notothenioid Comparative Genomics — PhD Pipeline Archive
+# Comparative Genomics — PhD Code Archive
 
 Code used during my PhD in Zhuang Lab, University of Arkansas. Scripts are grouped by pipeline stage, in the
 order they were actually run. Every folder has its own `README.md` explaining what
