@@ -23,14 +23,9 @@ CotGob (reference) vs DisMaw (query), 30 GB, FASTA inputs. Note the input filena
 `modified_GCF_...` and `2_modified_GCA_...` — those prefixes mean the header-cleanup
 steps below were already applied. That is the whole reason the file is named `2_`.
 
-### `sumaira_makelastz.sh`
-TaeGut (zebra finch) vs Pkram — **bird genomes, a collaborator's data, not part of the
-notothenioid project.** Kept because it is a clean worked example of the same pipeline on
-a different clade, and it uses the longest runtime setting (190 h, 50 CPU).
-
 ---
 
-## Route B — extract chains from an existing Cactus HAL
+## Route B — extract chains from an existing Cactus .hal alignment file
 
 If a Cactus alignment already exists (see `06_whole_genome_alignment_cactus`), you can
 pull pairwise chains straight out of it instead of realigning.
