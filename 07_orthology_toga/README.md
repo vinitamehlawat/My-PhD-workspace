@@ -33,15 +33,6 @@ Flags used throughout the project: `--kt --cb 10,100 --cjn 500 --ms`
 - `--cjn 500` split into 500 cluster jobs
 - `--ms` skip the "missing" sanity check
 
-### `toga_run_flatfish.sh`
-Same pipeline on the flatfish comparison set: turbot (ScoMax) reference → ReiHip query.
-This is the parallel dataset used to ask whether patterns seen in notothenioids are
-Antarctic-specific or general. Repeat per query species by swapping the chain, the query
-2bit and `--project_dir`.
-
-Both were run once per query species — 14 notothenioid project directories and 8 flatfish
-ones. The full list of TOGA project dirs is at the bottom of `plot_mutations_command.txt`.
-
 ## Interpreting the output
 
 `TOGA_commands_used.txt` has the post-processing one-liners: counting genes by status,
