@@ -1,9 +1,6 @@
-# 01 — Genome Assembly
+# 01 — Genome Assembly for AFPI project (https://doi.org/10.1093/molbev/msae182)
 
-Genome-size estimation and Hi-C scaffolding. Used for the winter flounder and grubby sculpin
-(*Myoxocephalus aenaeus*) assembly; notothenioid genomes were downloaded from NCBI
-rather than assembled here (see `08_orthology_orthofinder/Noto_MCScanX_commands.txt`
-for the NCBI datasets API download commands).
+Genome-size estimation and Hi-C scaffolding for the winter flounder ( _Pseudopleuronectes americanus_) and grubby sculpin (_Myoxocephalus aenaeus_) 
 
 ## `GenomeEstimationScript.sh`
 Counts 21-mers across all raw reads with **Jellyfish**, producing the k-mer count file
@@ -17,7 +14,7 @@ you then feed to GenomeScope to estimate genome size, heterozygosity and repeat 
   Next step, not scripted here: `jellyfish histo 21mer_out > 21mer.histo`, then upload
   the histogram to GenomeScope.
 
-## `run_yahs.sh`
+## `run_yahs.sh` (https://github.com/c-zhou/yahs)
 **YaHS** Hi-C scaffolding of contigs into chromosome-scale scaffolds, plus optional
 generation of Hi-C contact maps for manual curation.
 
