@@ -31,5 +31,5 @@ Notes:
 Standalone single-species RepeatModeler run for the sculpin genome — same tool as step 2
 above, kept separately because it was run on its own outside the notothenioid loop.
 
-- In: `/storage/vlamba/data/Genome-files/Sculpin.fa`
+- In: `/user/data/Genome-files/Sculpin.fa`
 - Out: `Myoxocephalus_aenaeus-families.fa` + `repeatmodeler.log`
