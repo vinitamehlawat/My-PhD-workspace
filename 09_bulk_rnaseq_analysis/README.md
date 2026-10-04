@@ -37,12 +37,6 @@ sequence — pick one and note which in your methods.
 
 ## ⚠️ These `.Rmd` files are not yet in this folder
 
-They were left in Google Drive because they are bulky notebook files. **Copy them in from
-`vinita_code/codes/Lab Exercises/` before pushing**, then delete this section.
-
-Also in that Drive folder, and deliberately excluded as data rather than code:
-`5.RData`, `code4.RData`, and the read-quality plots
-(`distribution of quality scores across the sampled reads-Rplot.png` / `.pdf`).
 
 ## Running them
 
