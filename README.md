@@ -22,7 +22,7 @@ command_script_used             the misc one-liners and utility scripts
 ```
 
 Stages 05 → 07 are the spine of the gene-loss work: build a chain between a reference
-and a query genome (makelastz aligned whole-genome), hand that chain to TOGA.
+and a query genome (makelastz aligned whole-genome (https://github.com/hillerlab/make_lastz_chains)), hand that chain to TOGA (https://github.com/hillerlab/TOGA).
 Stage 06 is an alternative route to the same chains (cactus multiple
 alignment used for synteny).
 
