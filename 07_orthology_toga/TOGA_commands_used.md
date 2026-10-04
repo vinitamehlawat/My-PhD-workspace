@@ -1,13 +1,13 @@
 ## Link for understanding Post-TOGA
 https://genome.senckenberg.de/download/TOGA/README.txt
 
-# Count all number of gene in loss_sum.tsv####
+ Count all number of gene in loss_sum.tsv
 grep GENE loss_summ_data.tsv | cut -f3 | sort | uniq -c
 
 # NOTE: the remainder of this file duplicated the general command notebook.
-# The full, most recent version of those notes lives in:
-#     ../command_script_used/lab_notebook_all_commands.txt
-# Kept here is only what is TOGA-specific:
+The full, most recent version of those notes lives in:
+     ../command_script_used/lab_notebook_all_commands.txt
+**Kept here is only what is TOGA-specific:**
 
 ### Pre-TOGA: build the chain
 ./make_chains.py CotGob DisMaw /home/vlamba/modified_GCF_900634415.1.fa <query.fna> --project_dir /home/vlamba/2_CotDis_chaining -f --chaining_memory 30
