@@ -2,13 +2,13 @@
 #SBATCH --job-name=Sculpin-RepeatModeler
 #SBATCH -e Sculpin-RepeatModeler.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=vlamba@uark.edu
+#SBATCH --mail-user= "Your ssh address"
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1 
 #SBATCH --cpus-per-task=32
-#SBATCH --partition condo
+#SBATCH --partition "your node"
 #SBATCH --qos condo
-#SBATCH --constraint 'xz036'
+#SBATCH --constraint "XYZ.."
 #SBATCH --time=90:00:00
 
 conda activate RepeatModeler
